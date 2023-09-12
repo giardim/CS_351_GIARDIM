@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="author" content="Michael Giardina">
     <title>Emulating A CPU</title>
+     <!--Typically, css would go here, but the textbook said not to use css for formatting-->
     <style>
-        body{
-            margin: 10px;
-        }
-        
     </style>
+    <!--
+        For ease of grading, each bullet will be commented, for example the first bullet:
+        "Include at least one heading (h1, h2, etc.) in your web page" will be commented with *1
+        Please let me know if you do not want me to do this in the future
+        For *6 I used mark, ins, strong, em, pre, wbr, sup, abbr, q, code and others
+    -->
 </head>
 <body>
     <!--Introduction section of the document-->
     <div>
-        <h1>
+        <h1> <!--*1-->
             Emulating A CPU With C++
         </h1>
         <p>
@@ -26,13 +29,14 @@
     <br>
     <!--Key Terms section of the document-->
     <div>
-        <h2>
+        <h2><!--*1-->
             Key Terms
         </h2>
         <p>
             Before we can begin emulating, we need to know key terms:
         </p>
         <p>
+            <!--*5-->
             <mark><ins><dfn><abbr title="Central Processing Unit">
                CPU:
             </abbr></dfn></ins></mark>
@@ -46,24 +50,34 @@
             and may be read-only or write-only. <sup>2</sup>
         </p>
         <p>
+            <!--*5-->
+            <!--*6-->
             <mark><ins><dfn><abbr title="Program Counter">
                 PC:
              </abbr></dfn></ins></mark>
             A special register in the CPU. The PC is incremented after fetching an instruction, 
             and holds the memory address of ("points to") the next instruction that would be executed.<sup>3</sup>
         </p>
+        <p>
+            <mark><ins><dfn><abbr title="Stack Counter">
+                <!--*5-->
+                SC:
+             </abbr></dfn></ins></mark>
+            A stack pointer is a small register that stores the memory address of the last data element added to the stack or, in some cases, 
+            the first available address in the stack.<sup>5</sup>
+        </p>
         </div>
         <br>
     <!--Code section of the document-->
     <div>
-        <h2>Code Exploration</h2>
+        <h2>Code Exploration</h2><!--*1-->
         <p>
-            Now that we know the key terms, we can begin exploring the code needed to emulate the CPU. <strong>Please note: </strong>
+            Now that we know the key terms, we can begin exploring the code needed to emulate the <abbr title="Central Processing Unit">CPU</abbr>. <strong>Please note: </strong>
               this program is not complete, but more of a beginner template. I will try to explain the program as thoroughly as possible,
               but for more information please reach out. I am available anyday <del>before <time datetime="12:00">noon</time></del> after
                <time datetime="16:00">4:00pm</time>.
         </p>
-        <h4>
+        <h4><!--*1-->
             Section 1, inclusions
         </h4>
         <code>
@@ -73,14 +87,16 @@
         </code>
         <br>
         <p>
-            The code above are simple include statements. These statements <q>link external libraries to our program, allowing us to 
-                use useful functions.</q> <sup>4</sup> If you are unaware of include statements, I recommend you review C++ before continuing.
+            <!--*4-->
+            The code above are simple include statements. As the book <cite>Introduction to C++ Programming</cite> states, these statements <q>link external libraries to our program, 
+                allowing us to use useful functions.</q> <sup>4</sup> If you are unaware of include statements, 
+                I recommend you review C++ before continuing.
         </p>
-        <h4>
+        <h4><!--*1-->
             Section 2, defining datatypes
         </h4>
         <pre>
-            <code>
+            <code> <!--*2-->   
                 //8 bits
                 using Byte = unsigned char;
                 //16 bit
@@ -98,11 +114,11 @@
             For those of you unfamiliar with the <code>using</code> keyword, it is similar to typedef. Both allow the programmer to rename 
             datatypes. However, <strong>please note</strong>, typedef has depreciated and you should no longer use it in your programs.
         </p>
-        <h4>
+        <h4><!--*1-->
             Section 3, emulating the memory
         </h4>
         <pre>
-            <code>
+            <code><!--*2-->   
             struct Mem{
                 static constexpr u32 MAX_MEM = 1024 * 64;
                 Byte Data[MAX_MEM];
@@ -126,7 +142,97 @@
             </code>
         </pre>
         <p>
-            <strong><em>Finally</em></strong>, now that we have our libraries included and datatypes defined, we can start emulating our cpu.
+            <!--*5-->
+            This portion of code simulates our memory available to our <abbr title="Central Processing Unit">CPU</abbr> and simulates how our memory would work. The first two lines are variables that define the space in our memory. 
+            For this chip, there are 1024 &times 64 possible memory locations. <q>Data</q> represents our physical memory, and when we use the <q>Initialize</q>
+            function, we set each position of our memory to 0.
+        </p>
+        <p>
+            The next two code blocks are operator overloads. Operator overloads redefines how the language uses operators. For these two cases,
+            the operator overload allows the programmer to return an <q>address</q> from our <q>memory</q>. For example, if the user passes <q>32</q> to the second 
+            operator overload function, it will return the 32nd index of memory, allowing that memory location to be overwritten.
+        </p>
+        <h4><!--*1-->
+            Section 4, emulating our CPU
+        </h4>
+        <pre>
+            <code> <!--*2-->   
+            struct CPU{
+            	//Program counter
+            	Word PC;
+            	//Stack Pointer
+            	Word SP;
+            
+            	//Registers
+            	Byte A, X, Y;
+            
+            	//Process Status Flags
+            	Byte C : 1;
+            	Byte Z : 1;
+            	Byte I : 1;
+            	Byte D : 1;
+            	Byte B : 1;
+            	Byte V : 1;
+            	Byte N : 1;
+            
+            	void Reset(Mem &mem){
+            		PC = 0xFFFC;
+            		SP = 0x0100;
+            		C = Z = I = D = B = V = N = 0;
+            		A = X = Y = 0;
+            		mem.Initialize();
+                }
+            
+            	Byte FetchByte (u32 &Cycles, Mem &mem){
+            		Byte Data = mem[PC];
+            		PC++;
+            		Cycles--;
+            		return Data;
+            	}
+            
+            	Byte readByte(u32 &Cycles, Byte address, Mem &mem){
+            		Byte Data = mem[address];
+            		Cycles--;
+            		return Data;
+            	}
+            
+            	void Execute(u32 Cycles, Mem &mem){
+            		while (Cycles > 0){
+            			//CPU functions would go here
+            		}
+            	}
+            };
+            </code>
+        </pre>
+        <p>
+            <!--*5-->
+            <strong><em>Finally</em></strong>, now that we have our libraries included, datatypes defined, and memory established we can 
+            start emulating our <abbr title="Central Processing Unit">CPU</abbr>. This may seem daunting, 
+            but it is actually just elementary C++ code. The first 16 lines are variables establishing our <abbr title="Program Counter">PC</abbr>, 
+            <abbr title="Stack Counter">SC</abbr>, registers and flags. These variables will all be used later in our code.
+        </p>
+        <p>
+            <!--*5-->
+            The first function in our <abbr title="Central Processing Unit">CPU</abbr> struct sets all of the pointers to their starting locations in memory, and 
+            setting all of the flags and registers to 0. This function also calles the <q>Initialize</q> function in the mem struct to set
+            all of the values in the memory to 0.
+            <!--*3-->
+            For example: <abbr title="Program Counter">PC</abbr> is set to memory address 0xFFFC. Since we input 0xFFFC, the output is a variable
+            which <q>points to</q> memory address 0xFFFC, or the first location of memory.
+        </p>
+        <p>
+            The next two functions are similar, but differ in one important way. The first function, <q>FetchByte</q> gets the memory address
+            the program counter is pointing to, increments the program counter, then decrements the number of  cycles. <Strong>Please Note:</Strong>
+            To access the memory address we are using the operator we overloaded in the Memory struct, tying everything back together.  
+        </p>
+        <p>
+            The other function <q>ReadByte</q> also gets the value of the memory, but instead of getting the value the program counter is pointing to,
+            <q>ReadByte</q> gets the value of memory that we ask it to get, and does not increment the program counter. Otherwise, it is 
+            the same as <q>FetchByte</q>.
+        </p>
+        <p>
+            Finally we have the <q>Execute</q> function. This function does as you would expect, it calls a function that the CPU would execute, and 
+            keeps executing while it has enough cycles to do so.
         </p>
     </div>
     <!--Works cited section of the document-->
@@ -156,8 +262,15 @@
         </p>
         <p>
             *4
+            <!--*4-->
             <cite>
                 Introduction to C++ Programming - A totally real book by Michael Giardina
+            </cite>
+        </p>
+        <p>
+            *5
+            <cite>
+                Tech Target - https://www.techtarget.com/whatis/definition/stack-pointer
             </cite>
         </p>
     </div>
