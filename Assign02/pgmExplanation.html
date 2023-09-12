@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Michael Giardina">
+    <title>Emulating A CPU</title>
+    <style>
+        body{
+            margin: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <!--Introduction section of the document-->
+    <div>
+        <h1>
+            Emulating A CPU With C++
+        </h1>
+        <p>
+            The following is a brief explaination on how to emulate a CPU using C++. Please note that this is a general procedure,
+             but will change depending on what CPU you are planning on emulate. For this explaination, we are emulating a <wbr> 6502 8-bit
+             processor.
+        </p>
+    </div>
+    <br>
+    <!--Key Terms section of the document-->
+    <div>
+        <h2>
+            Key Terms
+        </h2>
+        <p>
+            Before we can begin emulating, we need to know key terms:
+        </p>
+        <p>
+            <mark><ins><dfn><abbr title="Central Processing Unit">
+               CPU:
+            </abbr></dfn></ins></mark>
+             The component of a computer system that performs the basic operations (such as processing data) of the system, 
+            that exchanges data with the system's memory or peripherals, and that manages the system's other components. <sup>1</sup>
+        </p>
+        <p>
+            <mark><ins><dfn>Computer Register:</dfn></ins></mark>
+            A processor register is a quickly accessible location available to a computer's processor.
+            Registers usually consist of a small amount of fast storage, although some registers have specific hardware functions, 
+            and may be read-only or write-only. <sup>2</sup>
+        </p>
+        <p>
+            <mark><ins><dfn><abbr title="Program Counter">
+                PC:
+             </abbr></dfn></ins></mark>
+            A special register in the CPU. The PC is incremented after fetching an instruction, 
+            and holds the memory address of ("points to") the next instruction that would be executed.<sup>3</sup>
+        </p>
+        </div>
+        <br>
+    <!--Code section of the document-->
+    <div>
+        <h2>Code Exploration</h2>
+        <p>
+            Now that we know the key terms, we can begin exploring the code needed to emulate the CPU. <strong>Please note: </strong>
+              this program is not complete, but more of a beginner template. I will try to explain the program as thoroughly as possible,
+              but for more information please reach out. I am available anyday <del>before <time datetime="12:00">noon</time></del> after
+               <time datetime="16:00">4:00pm</time>.
+        </p>
+        <h4>
+            Section 1, inclusions
+        </h4>
+        <code>
+            #include &ltstdio.h&gt
+            <br>
+            #include &ltstdlib.h&gt   
+        </code>
+        <br>
+        <p>
+            The code above are simple include statements. These statements <q>link external libraries to our program, allowing us to 
+                use useful functions.</q> <sup>4</sup> If you are unaware of include statements, I recommend you review C++ before continuing.
+        </p>
+        <h4>
+            Section 2, defining datatypes
+        </h4>
+        <pre>
+            <code>
+                //8 bits
+                using Byte = unsigned char;
+                //16 bit
+                using Word = unsigned short;
+                //32 bit
+                using u32 = unsigned int;
+            </code>
+        </pre>
+        <p>
+            The code above redefines data types that we will be using most often. For our purposes we need an 8-bit data type, a 16-bit datatype,
+            and a 32-bit datatype. We can use the <code>using</code> keyword to rename datatypes already included in C++ to make programming 
+            easier for us. 
+        </p>
+        <p>
+            For those of you unfamiliar with the <code>using</code> keyword, it is similar to typedef. Both allow the programmer to rename 
+            datatypes. However, <strong>please note</strong>, typedef has depreciated and you should no longer use it in your programs.
+        </p>
+        <h4>
+            Section 3, emulating the memory
+        </h4>
+        <pre>
+            <code>
+            struct Mem{
+                static constexpr u32 MAX_MEM = 1024 * 64;
+                Byte Data[MAX_MEM];
+                void Initialize(){
+                    for (u32 i; i < MAX_MEM; ++i){
+                        //Set all of the memory to 0
+                        Data[i] = 0;
+                    }
+                }
+                
+                //Read Byte from memory
+                Byte operator[](u32 Address) const{
+                    return Data[Address];
+                }
+                
+                //Write Byte to memory
+                Byte &operator[](u32 Address){
+                    return Data[Address];
+                }
+            };
+            </code>
+        </pre>
+        <p>
+            <strong><em>Finally</em></strong>, now that we have our libraries included and datatypes defined, we can start emulating our cpu.
+        </p>
+    </div>
+    <!--Works cited section of the document-->
+    <div>
+        <br>
+        <em>
+            Works Cited
+        </em>
+        <br>
+        <p>
+            *1
+        <cite>
+            Webster Dictionary - https://www.merriam-webster.com/dictionary/CPU
+        </cite>
+        </p>
+        <p>
+            *2
+            <cite>
+                Wikipedia - https://en.wikipedia.org/wiki/Processor_register
+            </cite>
+        </p>
+        <p>
+            *3
+            <cite>
+                Wikipedia = https://en.wikipedia.org/wiki/Program_counter
+            </cite>
+        </p>
+        <p>
+            *4
+            <cite>
+                Introduction to C++ Programming - A totally real book by Michael Giardina
+            </cite>
+        </p>
+    </div>
+
+    
+    
+</body>
+</html>
