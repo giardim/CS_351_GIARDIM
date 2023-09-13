@@ -11,19 +11,20 @@
         For ease of grading, each bullet will be commented, for example the first bullet:
         "Include at least one heading (h1, h2, etc.) in your web page" will be commented with *1
         Please let me know if you do not want me to do this in the future
-        For *6 I used mark, ins, strong, em, pre, wbr, sup, abbr, q, code and others
+        For *6 I used mark, ins, strong, em, pre, wbr, sup, sub, small, abbr, q, code and others
     -->
 </head>
 <body>
     <!--Introduction section of the document-->
     <div>
         <h1> <!--*1-->
-            Emulating A CPU With C++
+            Emulating A CPU With C++ 
         </h1>
         <p>
-            The following is a brief explaination on how to emulate a CPU using C++. Please note that this is a general procedure,
-             but will change depending on what CPU you are planning on emulate. For this explaination, we are emulating a <wbr> 6502 8-bit
-             processor.
+            The following is a brief explanation  on how to emulate a CPU using C++. Please note that this is a general procedure,
+             and will change depending on what CPU you are planning on emulating. CPU<sub>1</sub> will require different
+             specifications from CPU<sub>2</sub>, so please read the data sheet for your specific CPU, and don't just blindly follow along.
+             For this explanation , we are emulating a <wbr> 6502 8-bit processor.
         </p>
     </div>
     <br>
@@ -73,9 +74,9 @@
         <h2>Code Exploration</h2><!--*1-->
         <p>
             Now that we know the key terms, we can begin exploring the code needed to emulate the <abbr title="Central Processing Unit">CPU</abbr>. <strong>Please note: </strong>
-              this program is not complete, but more of a beginner template. I will try to explain the program as thoroughly as possible,
+            This  program is not complete, but more of a beginner template. I will try to explain the program as thoroughly as possible,
               but for more information please reach out. I am available anyday <del>before <time datetime="12:00">noon</time></del> after
-               <time datetime="16:00">4:00pm</time>.
+               <time datetime="16:00">4:00pm</time> <small>est</small>.
         </p>
         <h4><!--*1-->
             Section 1, inclusions
@@ -93,7 +94,7 @@
                 I recommend you review C++ before continuing.
         </p>
         <h4><!--*1-->
-            Section 2, defining datatypes
+            Section 2, defining data types
         </h4>
         <pre>
             <code> <!--*2-->   
@@ -106,13 +107,13 @@
             </code>
         </pre>
         <p>
-            The code above redefines data types that we will be using most often. For our purposes we need an 8-bit data type, a 16-bit datatype,
-            and a 32-bit datatype. We can use the <code>using</code> keyword to rename datatypes already included in C++ to make programming 
+            The code above redefines data types that we will be using most often. For our purposes we need an 8-bit data type, a 16-bit data type,
+            and a 32-bit data type. We can use the <code>using</code> keyword to rename datatypes already included in C++ to make programming 
             easier for us. 
         </p>
         <p>
             For those of you unfamiliar with the <code>using</code> keyword, it is similar to typedef. Both allow the programmer to rename 
-            datatypes. However, <strong>please note</strong>, typedef has depreciated and you should no longer use it in your programs.
+            data types. However, <strong>please note</strong>, typedef has depreciated and you should no longer use it in your programs.
         </p>
         <h4><!--*1-->
             Section 3, emulating the memory
@@ -206,7 +207,7 @@
         </pre>
         <p>
             <!--*5-->
-            <strong><em>Finally</em></strong>, now that we have our libraries included, datatypes defined, and memory established we can 
+            <strong><em>Finally</em></strong>, now that we have our libraries included, data types defined, and memory established we can 
             start emulating our <abbr title="Central Processing Unit">CPU</abbr>. This may seem daunting, 
             but it is actually just elementary C++ code. The first 16 lines are variables establishing our <abbr title="Program Counter">PC</abbr>, 
             <abbr title="Stack Counter">SC</abbr>, registers and flags. These variables will all be used later in our code.
@@ -214,7 +215,7 @@
         <p>
             <!--*5-->
             The first function in our <abbr title="Central Processing Unit">CPU</abbr> struct sets all of the pointers to their starting locations in memory, and 
-            setting all of the flags and registers to 0. This function also calles the <q>Initialize</q> function in the mem struct to set
+            setting all of the flags and registers to 0. This function also calls the <q>Initialize</q> function in the mem struct to set
             all of the values in the memory to 0.
             <!--*3-->
             For example: <abbr title="Program Counter">PC</abbr> is set to memory address 0xFFFC. Since we input 0xFFFC, the output is a variable
