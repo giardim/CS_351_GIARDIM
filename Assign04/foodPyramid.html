@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Michael Giardina">
+    <title>Food Pyramid</title>
+    <!--Beginning of the style section-->
+    <style>
+        caption{
+            font-size: xx-large;
+            padding: 15px;
+        }
+        div{
+            display: flex;
+            justify-content: center;
+        }
+        thead{
+            background-color: red;
+            color:white;
+        }
+        table{
+            border-style: solid;
+            border-width: thin;
+        }
+        tr, th, td{
+            border-style: solid;
+            border-width: thin;
+            padding: 10px;
+        }
+
+        td{
+            text-align: center;
+        }
+        .description{
+            font-style: italic;
+            font-weight: lighter;
+        }
+        .foodGroups{
+            text-align: left;
+            
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <!--Beginning of the table-->
+        <table>
+            <!--Title of the table-->
+            <caption>The Food Pyramid</caption>
+            <!--header of the table-->
+            <thead>
+            <tr>
+                <th></th>
+                <th colspan="2" >Serving Guidelines</th>
+            </tr>
+            <tr>
+                <th>Food Group</th>
+                <th>2005-2010</th>
+                <th>2011-present</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="foodGroups">
+                    Milk Group<br>
+                    <span class = "description">(Milk, Yogurt, Cheese)</span>
+                </th>
+                <td>2-3</td>
+                <td>3-4</td>
+            </tr>
+            <tr>
+                <th class="foodGroups">
+                    Meat Group<br>
+                    <span class = "description">(Beef, Poultry, Fish, Beans)</span>
+                </th>
+                <td>2-3</td>
+                <td>5-6</td>
+            </tr>
+            <tr>
+                <th class="foodGroups">
+                    Fruits
+                </th>
+                <td>2-4</td>
+                <td>2-4</td>
+            </tr>
+            <tr>
+                <th class="foodGroups">
+                    Vegetables
+                </th>
+                <td>3-4</td>
+                <td>1-2</td>
+            </tr>
+            <tr>
+                <th class="foodGroups">
+                    Heavily Salted Snacks
+                </th>
+                <td>1-2</td>
+                <td>3-5</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</body>
+</html>
