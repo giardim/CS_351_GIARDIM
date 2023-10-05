@@ -4,24 +4,115 @@
     <meta charset="UTF-8">
     <meta name="author" content="Michael Giardina">
     <title>Weather</title>
+
+    <!--Style for the document-->
+    <style>
+        .tbl{
+            display: table;
+            border-spacing: 10px; 
+        }
+        .tblRow{
+            display:table-row;
+            
+        }
+        .tblCol{
+            display: table-column;
+        }
+        .tblCell{
+            display: table-cell;
+            
+        }
+        .thead{
+            display: table-header-group;
+            font-size: xx-large;
+            font-weight: bold;
+            text-align: right;
+            vertical-align: middle;
+        }
+        .tbody{
+            display: table-row-group;
+            text-align: center;
+            text-align: left;   
+        }   
+        .tblCell{
+            display: table-cell; 
+        }
+        header > a{
+            font-weight: bold;
+            text-decoration: none;
+            font-size: large;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        header > a:hover{
+            background-color: silver;
+        }
+    </style>
 </head>
 <body>
+    <!--Header, has title and nav bar-->
     <header>
         <h1>World Weather</h1>
-        <a>North America</a>|<a>Europe</a>|<a>South America</a>
+        <a href="#europe">Europe</a>|<a href="#na">North America</a>|<a href="#sa">South America</a>
     </header>
     <article>
-        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fyt3.ggpht.com%2Fa%2FAATXAJwpvM93UKKK_5-HRYGVGqEUNQJcndCrrE8zsA%3Ds900-c-k-c0xffffffff-no-rj-mo&f=1&nofb=1&ipt=98837f853f2bdcefe53be8ee6dee1f93eeb54dcb4c264bae346fca260533dfe5&ipo=images" alt="Image of a thunder storm">
-    </article>
+        <!--Image of a thunder storm-->
+        <figure></figure>
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fyt3.ggpht.com%2Fa%2FAATXAJwpvM93UKKK_5-HRYGVGqEUNQJcndCrrE8zsA%3Ds900-c-k-c0xffffffff-no-rj-mo&f=1&nofb=1&ipt=98837f853f2bdcefe53be8ee6dee1f93eeb54dcb4c264bae346fca260533dfe5&ipo=images" alt="Image of a thunder storm">
+        </figure>
     <section>
-        <div class="table">
-            <div class="tableRow">
-                <div class="tableHeader">
-
+        <!--Beginning of the table section, holds the name of the contient and links to the weather for the cities on that contient-->
+        <div class="tbl">
+            <div class="tblRow">
+                <div class="thead tblCell" id="europe">Europe:</div>
+                <div class="tbody">
+                    <div class="tblCell">
+                        <div class="tblcol">
+                            <a target="_blank" href="https://weather.com/weather/today/l/5d3ac36b50e4aa01e9916508005d45eab1dffb15cb59d5b38cce3ca54d24c65d">London, England</a>
+                        </div>
+                        <div class="tblcol">
+                            <a target="_blank" href="https://weather.com/weather/today/l/d4a8cc32ae5dc80e1d91936de3b77f78d77e02561760a631c6684434a58e5699">Munich, Germany</a>
+                        </div>
+                        <div class="tblcol">
+                            <a target="_blank" href="https://weather.com/weather/today/l/02144e9a9a2fe048b3ecca9df91501293f98ee712846f78a5da25ba6690fd98c">Paris, France</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="tableCell"></div>
             </div>
+            <div class="tblRow">
+                <div class="thead tblCell" id="na">North America:</div>
+                <div class="tbody">
+                    <div class="tblCell">
+                        <div class="tblcol">
+                            <a target="_blank" href="https://weather.com/weather/today/l/23bcf2dc000ccd9e91b7d9b3a56426d7d7c3a9a73eede60246c9923346cb6d73">New Windsor, New York</a>
+                        </div>
+                        <div class="tblcol">
+                            <a target="_blank" href="https://weather.com/weather/today/l/6b36d98fbcd7a2333037ddd394158084654389b72703af4b82cd1b0dd0edbb07ba934a5ef44661eaa976392ace00026f">Orlando, Flordia</a>
+                        </div>
+                        <div class="tblcol">
+                            <a target="_blank" href="https://weather.com/weather/today/l/04219f55b835e68f20978855c62064ad0b0ffe1cdf5cba14a95f74305d5f053f">Bellevue, Nebraska</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tblRow">
+                <div class="thead tblCell" id="sa">South America:</div>
+                <div class="tbody">
+                    <div class="tblCell">
+                        <div class="tblcol">
+                            <a target="_blank" href="https://weather.com/weather/today/l/603d8a05eceb5e320da7f0b7f15559e080ce184b2937e1b39fd60018e3f885bc">Lima, Peru</a>
+                        </div>
+                        <div class="tblcol">
+                            <a target="_blank" href="https://weather.com/weather/today/l/4c8707d8c58adcbfc8a180ca0031e61fa18c13475c807f2346cbc5b0d75477f2">Rio de Janeiro, Brazil</a>
+                        </div>
+                        <div class="tblcol">
+                            <a target="_blank" href="https://weather.com/weather/today/l/03a150c9cfea1e06cec83a0f4f8d5c05e9db0572b7e6130ae6fea8f7d276c040">Quito, Ecuador</a>
+                        </div>
+                    </div>
+                </div>
+            </div> 
         </div>
     </section>
+    </article>
 </body>
 </html>
