@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Michael Giardina">
+    <title>Compass Game</title>
+    <style>
+        .game{
+            display: table;
+            font-size: 50px;
+            color: red;
+            text-align: center;
+        }
+        .row{
+            display: table-row;
+        }
+        .tableElement{
+            display: table-cell;
+            padding: 25px;
+            
+        }
+        .a_button{
+            color: blue;
+            width: fit-content;
+            height: fit-content;
+            font-size: 50px;
+        }
+        .diagonal {
+            transform: rotate(-45deg);
+        }
+        .italics{
+            font-style: italic;
+        }
+        .char{
+            width: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Compass Game</h1>
+    <p>The direction letters on the "compass" are scrambled. Press the arrows to properly position the direction letters.</p>
+    <form>    
+    <div class="game">
+        <div class="row">
+            <div class="tableElement"><input type="button" class = "a_button diagonal" value="&harr;"></div>
+            <div class="tableElement">E</div>
+        </div>
+        <div class="row">
+            <div class="tableElement">S</div>
+            <div class="tableElement"><input type="button" class = "a_button" value="&harr;"></div>
+            <div class="tableElement">N</div>
+        </div>
+        <div class="row">
+            <div class="tableElement"></div>
+            <div class="tableElement">W</div>
+            <div class="tableElement"><input type="button" class = "a_button diagonal" value="&harr;"></div>
+        </div>
+        </div>
+    <p>To restart the game, press <span class="italics">Restart</span>, enter N, S, E, and W in any order in the boxes below, and then press <span class="italics">Update</span>.</p>
+        <input type="button" value="Restart">
+        <br><br>
+        <label for="top">Top:</label>
+        <input type="text" class="char" id="top">
+        <label for="left">Left:</label>
+        <input type="text" class="char"  id="left">
+        <label for="right">Right:</label>
+        <input type="text" class="char"  id="right">
+        <label for="bottom">Bottom:</label>
+        <input type="text" class="char"  id="bottom">
+        <br><br>
+        <input type="button" value="Update" disabled>
+    </form>
+</body>
+</html>
