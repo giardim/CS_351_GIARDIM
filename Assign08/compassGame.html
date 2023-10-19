@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="author" content="Michael Giardina">
     <title>Compass Game</title>
+    <!--Below is code for the functionality of the website-->
     <script>
         function swapDirections(firstVal, secondVal){
             var directionOne = document.getElementById(firstVal);
@@ -16,11 +17,36 @@
         } 
 
         function restartGame(){
+            dOne = document.getElementById(1)
+            dTwo = document.getElementById(2)
+            dThree = document.getElementById(3)
+            dFour = document.getElementById(4)
+            dOne.innerHTML=""; 
+            dTwo.innerHTML=""; 
+            dThree.innerHTML=""; 
+            dFour.innerHTML=""; 
             updateButton = document.getElementById("update");
             updateButton.removeAttribute("disabled");
             return;
         }
+
+        function updateGame(){
+            topValue = document.getElementById("top").value;
+            leftValue = document.getElementById("left").value;
+            rightValue = document.getElementById("right").value;
+            bottomValue = document.getElementById("bottom").value;
+            dOne = document.getElementById(1);
+            dTwo = document.getElementById(2);
+            dThree = document.getElementById(3);
+            dFour = document.getElementById(4);
+            dOne.innerHTML = topValue;
+            dTwo.innerHTML = leftValue;
+            dThree.innerHTML = rightValue;
+            dFour.innerHTML = bottomValue;            
+        }
+
     </script>
+    <!--Below is the CSS for the website-->
     <style>
         .game{
             display: table;
@@ -54,9 +80,17 @@
     </style>
 </head>
 <body>
+    <!--This section only shows up if javascript is disabled-->
+    <noscript>
+        <div class="javascript-disabled">
+            JavaScript is disabled in your browser. Please enable it to view this website.
+        </div>
+    </noscript>
     <h1>Compass Game</h1>
+    <!--Directions section-->
     <p>The direction letters on the "compass" are scrambled. Press the arrows to properly position the direction letters.</p>
-    <form>    
+    <!--Game section-->
+    <form>   
     <div class="game">
         <div class="row">
             <div class="tableElement"><input type="button" class = "a_button diagonal" value="&harr;" onClick="swapDirections(1, 2)"></div>
@@ -74,18 +108,18 @@
         </div>
         </div>
     <p>To restart the game, press <span class="italics">Restart</span>, enter N, S, E, and W in any order in the boxes below, and then press <span class="italics">Update</span>.</p>
-        <input type="button" value="Restart" onClick="restartGame()">
+        <input type="reset" value="Restart" onClick="restartGame()">
         <br><br>
-        <label for="top">Top:</label>
+        <label for="top_e">Top:</label>
         <input maxlength="1" type="text" class="char" id="top">
-        <label for="left">Left:</label>
-        <input maxlength="1" type="text" class="char"  id="left">
-        <label for="right">Right:</label>
-        <input maxlength="1" type="text" class="char"  id="right">
-        <label for="bottom">Bottom:</label>
-        <input maxlength="1" type="text" class="char"  id="bottom">
+        <label for="left_e">Left:</label>
+        <input maxlength="1" type="text" class="char" id="left">
+        <label for="right_e">Right:</label>
+        <input maxlength="1" type="text" class="char" id="right">
+        <label for="bottom_e">Bottom:</label>
+        <input maxlength="1" type="text" class="char" id="bottom">
         <br><br>
-        <input type="button" id="update" value="Update" disabled="true">
+        <input type="button" id="update" value="Update" onClick="updateGame()" disabled="true">
     </form>
 </body>
 </html>
