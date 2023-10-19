@@ -17,28 +17,28 @@
         } 
 
         function restartGame(){
-            dOne = document.getElementById(1)
-            dTwo = document.getElementById(2)
-            dThree = document.getElementById(3)
-            dFour = document.getElementById(4)
+            var dOne = document.getElementById(1)
+            var dTwo = document.getElementById(2)
+            var dThree = document.getElementById(3)
+            var dFour = document.getElementById(4)
             dOne.innerHTML=""; 
             dTwo.innerHTML=""; 
             dThree.innerHTML=""; 
             dFour.innerHTML=""; 
-            updateButton = document.getElementById("update");
+            var updateButton = document.getElementById("update");
             updateButton.removeAttribute("disabled");
             return;
         }
 
         function updateGame(){
-            topValue = document.getElementById("top").value;
-            leftValue = document.getElementById("left").value;
-            rightValue = document.getElementById("right").value;
-            bottomValue = document.getElementById("bottom").value;
-            dOne = document.getElementById(1);
-            dTwo = document.getElementById(2);
-            dThree = document.getElementById(3);
-            dFour = document.getElementById(4);
+            var topValue = document.getElementById("top").value;
+            var leftValue = document.getElementById("left").value;
+            var rightValue = document.getElementById("right").value;
+            var bottomValue = document.getElementById("bottom").value;
+            var dOne = document.getElementById(1);
+            var dTwo = document.getElementById(2);
+            var dThree = document.getElementById(3);
+            var dFour = document.getElementById(4);
             dOne.innerHTML = topValue;
             dTwo.innerHTML = leftValue;
             dThree.innerHTML = rightValue;
