@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="author" content="Michael Giardina">
     <title>Roots Calculator</title>
+    <!--Adds functionality to the webpage-->
     <script>
         function findRoots(){
             var aItem = document.getElementById("a");
@@ -63,6 +64,7 @@
             }
             return;
         }
+
         function checkVals(item){
             if(item.value < -99 || item.value > 99){
                 item.style.borderColor = "red";
@@ -74,6 +76,7 @@
             }
         }
     </script>
+    <!--Adds css style to the webpage-->
     <style>
         .italics{
             font-style: italic;
@@ -81,12 +84,15 @@
     </style>
 </head>
 <body>
-    <h1>Quadratic Equation Roots Calculator</h1>
-    <p>This web page finds the roots of a polynomial equation of the following form:
-        a<span class="italics">x</span><sup>2</sup>+ b<span class="italics">x </span>+ c = 0</p>
-    <p><span class="italics">a</span>, <span class="italics">b</span>, and<span class="italics"> c</span>
-        must be integers between -99 and 99, and <span class="italics">a</span> must be non-zero.</p>
-
+    <!--Header for the webpage-->
+    <header>
+        <h1>Quadratic Equation Roots Calculator</h1>
+        <p>This web page finds the roots of a polynomial equation of the following form:
+            a<span class="italics">x</span><sup>2</sup>+ b<span class="italics">x </span>+ c = 0</p>
+        <p><span class="italics">a</span>, <span class="italics">b</span>, and<span class="italics"> c</span>
+            must be integers between -99 and 99, and <span class="italics">a</span> must be non-zero.</p>
+    </header>
+    <!--Beginning of the form section-->
     <form>
         <label for="a">a:</label>
         <input type="number" id="a" onchange="checkVals(this)">
@@ -97,6 +103,7 @@
         <br><br>
         <input type="button" value="Calculate roots" onClick="findRoots()">
     </form>
+    <!--Displays the answer to the form-->
     <div>
         <p id="answers"></p>
     </div>
