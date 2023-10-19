@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Michael Giardina">
+    <title>Roots Calculator</title>
+    <script>
+        function findRoots(){
+            var aItem = document.getElementById("a");
+            var bItem = document.getElementById("b");
+            var cItem = document.getElementById("c");
+            var a = aItem.value;
+            var b = bItem.value;
+            var c = cItem.value;
+            var answers = document.getElementById("answers");
+            answers.innerHTML = "Solution: "
+
+            var alertUser = false;
+            var alertString = "";
+
+            if (a == 0 || a < -99 || a > 99){
+                alertString += "Invalid entry for a. Must be a non-zero integer between -99 and +99.\n";
+                alertUser = true;
+            }
+            if (b < -99 || b > 99){
+                alertString += "Invalid entry for b. Must be an integer between -99 and +99.\n";
+                alertUser = true;
+            }
+            if(c < -99 || c > 99){
+                alertString += "Invalid entry for c. Must be an integer between -99 and +99.\n";
+                alertUser = true;
+            }
+
+            if (alertUser == true){
+                alert(alertString);
+                answers.innerHTML = ""
+                //extra credit below
+                aItem.style.borderColor = "red";
+                aItem.style.borderWidth = "2px";
+                bItem.style.borderColor = "red";
+                bItem.style.borderWidth = "2px";
+                cItem.style.borderColor = "red";
+                cItem.style.borderWidth = "2px";
+                return;
+            }
+
+            if (b**2 < (4*a*c)){
+                answers.innerHTML += "<span class='italics'>x</span>'s roots are imaginary"
+            }
+            else if (b**2 === (4*a*c)){
+                var inRoots = (b**2) - (4*a*c);
+                var inRoots = Math.sqrt(inRoots);
+                x = (-b + inRoots)/2*a;
+                answers.innerHTML += "<span class='italics'>x</span> = " + x.toFixed(3);
+            }
+            else{
+                var inRoots = (b**2) - (4*a*c);
+                var inRoots = Math.sqrt(inRoots);
+                x1 = (-b + inRoots)/(2*a);
+                x2 = (-b - inRoots)/(2*a);
+                answers.innerHTML += "<span class='italics'>x</span> = " + x1.toFixed(3);
+                answers.innerHTML += ", <span class='italics'>x</span> = " + x2.toFixed(3);
+            }
+            return;
+        }
+        function checkVals(item){
+            if(item.value < -99 || item.value > 99){
+                item.style.borderColor = "red";
+                item.style.borderWidth = "2px";
+            }
+            else{
+                item.style.borderColor = "black";
+                item.style.borderWidth = "1px";
+            }
+        }
+    </script>
+    <style>
+        .italics{
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quadratic Equation Roots Calculator</h1>
+    <p>This web page finds the roots of a polynomial equation of the following form:
+        a<span class="italics">x</span><sup>2</sup>+ b<span class="italics">x </span>+ c = 0</p>
+    <p><span class="italics">a</span>, <span class="italics">b</span>, and<span class="italics"> c</span>
+        must be integers between -99 and 99, and <span class="italics">a</span> must be non-zero.</p>
+
+    <form>
+        <label for="a">a:</label>
+        <input type="number" id="a" onchange="checkVals(this)">
+        <label for="b">b:</label>
+        <input type="number" id="b" onchange="checkVals(this)">
+        <label for="c">c:</label>
+        <input type="number" id="c" onchange="checkVals(this)">
+        <br><br>
+        <input type="button" value="Calculate roots" onClick="findRoots()">
+    </form>
+    <div>
+        <p id="answers"></p>
+    </div>
+</body>
+</html>
