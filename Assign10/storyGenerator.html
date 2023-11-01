@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Michael Giardina">
+    <title>Story Generator</title>
+    <script type="text/javascript" src="/Assign10/storyGenerator.js"></script>
+    <style>
+        .mono{
+            font-family: Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .form_section{
+            display: table;
+        }
+        .tbl_row{
+            display:table-row;
+        }
+        .tbl_cell{
+            display: table-cell;
+            padding-right: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Story Generator</h1>
+    <section class="form_section">
+        <form>
+        <p>
+            Enter appropriate values in all the text boxes. Then click the <span class="taho">Done</span> 
+        button to generate a story with your entered values plugged into it.
+        </p>
+        <div class="tbl_row">
+            <label class="tbl_cell" for="noun">noun: </label>
+            <input class="tbl_cell" id="noun" type="text">
+        </div>
+        <div class="tbl_row">
+            <label class="tbl_cell" for="ptverb">past-tensed verb: </label>
+            <input class="tbl_cell" id="ptverb" type="text">
+        </div>
+        <div class="tbl_row">
+            <label class="tbl_cell" for="adj">adjective: </label>
+            <input class="tbl_cell" id="adj" type="text">
+        </div>
+        <div class="tbl_row">
+            <label class="tbl_cell" for="ptverb2">past-tensed verb: </label>
+            <input class="tbl_cell" id="ptverb2" type="text">
+        </div>
+        <div class="tbl_row">
+            <label class="tbl_cell" for="adj2">adjective: </label>
+            <input class="tbl_cell" id="adj2" type="text">
+        </div>
+            <input type="button" id="done" value="Done">
+            <input type="button" id="reset" value="Reset">
+        </form>
+    </section>
+</body>
+</html>
