@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="author" content="Michael Giardina">
     <title>Story Generator</title>
+    <!--Links js script to the webpage-->
     <script type="text/javascript" src="/Assign10/storyGenerator.js"></script>
+    <!--CSS Style-->
     <style>
         .mono{
             font-family: Tahoma, Geneva, Verdana, sans-serif;
         }
-        .form_section{
+        .formSection{
             display: table;
         }
         .tbl_row{
@@ -19,17 +21,26 @@
             display: table-cell;
             padding-right: 15px;
         }
-
+        .noText{
+            color: red;
+        }
+        #storySection{
+            color: blue;
+            font-family: 'Comic Sans MS';
+            display:none;   
+        }
+        
     </style>
 </head>
 <body>
     <h1>Story Generator</h1>
-    <section class="form_section">
-        <form>
+    <!--Beginning of the form section-->
+    <section id="formSection" class="formSection">
         <p>
             Enter appropriate values in all the text boxes. Then click the <span class="taho">Done</span> 
-        button to generate a story with your entered values plugged into it.
+            button to generate a story with your entered values plugged into it.
         </p>
+        <form>
         <div class="tbl_row">
             <label class="tbl_cell" for="noun">noun: </label>
             <input class="tbl_cell" id="noun" type="text">
@@ -50,9 +61,21 @@
             <label class="tbl_cell" for="adj2">adjective: </label>
             <input class="tbl_cell" id="adj2" type="text">
         </div>
-            <input type="button" id="done" value="Done">
-            <input type="button" id="reset" value="Reset">
+            <input type="button" id="done" value="Done" onclick="buildStory()">
+            <input type="button" id="reset" value="Reset" onclick="resetForm()">
         </form>
+    </section>
+    <!--Beginning of the story section-->
+    <section id="storySection">
+        <p id="story">
+            It was a dark and stormy night. A shot rang out! A <span class="noText">&lt;missing text&gt;</span> slammed.
+            The maid <span class="noText">&lt;missing text&gt;</span>. Suddenly, a <span class="noText">&lt;missing text&gt;</span>
+            ship appeared on the horizon! While millions of people <span class="noText">&lt;missing text&gt;</span>, the king
+            lived in luxury. Meanwhile, on a <span class="noText">&lt;missing text&gt;</span> farm in Kansas, a boy was growing up.
+            <br><br>
+            The end
+        </p>
+        <input type="button" value="Return" onClick="backToForm()">
     </section>
 </body>
 </html>
