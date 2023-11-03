@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Michael Giardina">
+    <title>Statistics</title>
+    <script type="text/javascript" src="/Assign11/statistics.js"></script>
+    <style>
+        .btnRow{
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <section class="calculator">
+        <form id="formSection">
+            <h1>Statistics Calculator</h1>
+            <h2>Enter a list of numbers separated by spaces</h2>
+            <label for="numberlist">Number List: </label>
+            <input type="text" id="numberlist" onchange="createList(this)">
+            <div class="btnRow">
+                <input type="button" value="Mean" onClick="createList(this)">
+                <input type="button" value="Variance" onClick="createList(this)">
+                <input type="button" value="Standard Deviation" onClick="createList(this)">
+            </div>
+        </form>
+    </section>
+</body>
+</html>
