@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="author" content="Michael Giardina">
     <title>Statistics</title>
+    <!--Link js script to website-->
     <script type="text/javascript" src="/Assign11/statistics.js"></script>
+    <!--CSS styling-->
     <style>
         .btnRow{
             display: flex;
@@ -15,12 +17,13 @@
     </style>
 </head>
 <body>
+    <!--Beginning of calculator section-->
     <section class="calculator">
         <form id="formSection">
             <h1>Statistics Calculator</h1>
             <h2>Enter a list of numbers separated by spaces</h2>
             <label for="numberlist">Number List: </label>
-            <input type="text" id="numberlist" onchange="createList(this)">
+            <input type="text" id="numberlist">
             <div class="btnRow">
                 <input type="button" value="Mean" onClick="createList(this)">
                 <input type="button" value="Variance" onClick="createList(this)">
